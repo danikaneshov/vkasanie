@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>VKASANIE | Premium Hookah</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" href="icons/favicon.ico" sizes="any">
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body data-theme="dark">
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+    </div>
+
+    <div id="splash-screen">
+        <div class="splash-logo">VKASANIE</div>
+        <div class="splash-sub">Premium Hookah</div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <header>
+        <div class="logo">VKASANIE</div>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <div id="theme-btn" onclick="toggleTheme()"
+                style="cursor: pointer; color: var(--text-main); background: var(--input-bg); padding: 8px; border-radius: 50%;">
+                <svg id="icon-moon" style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="icon-sun" style="width:20px;height:20px; display:none;" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </div>
+            <div class="status-badge"><span class="pulse-dot"></span> АКТИВНО</div>
+        </div>
+    </header>
+
+    <div class="app-content">
+        <div id="tab-home" class="tab-pane active">
+            <h2 class="section-title">Твой статус</h2>
+            <div id="home-empty" class="glass"
+                style="text-align: center; padding: 60px 20px; border-radius: var(--radius-lg);">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                    style="margin-bottom:20px; color:var(--text-muted);">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+                <p style="font-weight: 700; font-size: 1.1rem;">Готов к дыму?</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Сделай свой первый заказ.</p>
+                <button class="btn btn-red" style="margin-top: 25px;" onclick="switchTab('tab-store')">ОТКРЫТЬ
+                    АРСЕНАЛ</button>
+            </div>
+            <div id="home-trackers-container" style="display: none;"></div>
+        </div>
+
+        <div id="tab-store" class="tab-pane">
+            <h2 class="section-title">Арсенал</h2>
+            <div class="app-card glass">
+                <div class="app-card-header">
+                    <span class="app-card-title">SOLO</span>
+                    <div style="text-align: right;">
+                        <span class="discount-badge" id="badge-solo" style="display: none;">СКИДКА</span>
+                        <span class="old-price" id="old-price-solo" style="display: none;">7 000 ₸</span>
+                        <span class="app-card-price" id="price-solo" data-base="7000">7 000 ₸</span>
+                    </div>
+                </div>
+                <p class="app-card-desc">Отличный выбор для одного или в паре.</p>
+                <p class="app-card-kit">1 аппарат • 1 забивка • 4 угля • плитка</p>
+                <button class="btn btn-black" onclick="openOrderModal('SOLO', 7000)">Выбрать</button>
+            </div>
+
+            <div class="app-card glass"
+                style="border: 1px solid var(--accent); box-shadow: 0 10px 30px rgba(255,0,85,0.1);">
+                <div class="app-card-header">
+                    <span class="app-card-title"
+                        style="background: linear-gradient(90deg, #ff0055, #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DOUBLE</span>
+                    <div style="text-align: right;">
+                        <span class="discount-badge" id="badge-double" style="display: none;">СКИДКА</span>
+                        <span class="old-price" id="old-price-double" style="display: none;">9 000 ₸</span>
+                        <span class="app-card-price" id="price-double" data-base="9000">9 000 ₸</span>
+                    </div>
+                </div>
+                <p class="app-card-desc">Хит продаж. Две забивки — выгоднее!</p>
+                <p class="app-card-kit">1 аппарат • 2 забивки • 8 углей • плитка</p>
+                <button class="btn btn-red" onclick="openOrderModal('DOUBLE', 9000)">Выбрать</button>
+            </div>
+
+            <div class="app-card glass"
+                style="border: 1px solid var(--secondary); box-shadow: 0 10px 30px rgba(0,229,255,0.1);">
+                <div class="app-card-header">
+                    <span class="app-card-title" style="color: var(--secondary);">TEAM</span>
+                    <div style="text-align: right;">
+                        <span class="discount-badge" id="badge-team" style="display: none;">СКИДКА</span>
+                        <span class="old-price" id="old-price-team" style="display: none;">16 000 ₸</span>
+                        <span class="app-card-price" id="price-team" data-base="16000">16 000 ₸</span>
+                    </div>
+                </div>
+                <p class="app-card-desc">Идеально для тусовки с друзьями.</p>
+                <p class="app-card-kit">2 аппарата • 4 забивки • 16 углей • 2 плитки</p>
+                <button class="btn btn-cyan" onclick="openOrderModal('TEAM', 16000)">Выбрать</button>
+            </div>
+        </div>
+
+        <div id="tab-profile" class="tab-pane">
+            <div id="view-login" class="glass"
+                style="padding: 40px 20px; border-radius: var(--radius-lg); text-align: center;">
+                <h2 class="section-title">Вход</h2>
+                <input type="text" class="modal-input" id="reg-name" placeholder="Твое имя (для новых)"
+                    style="display: none; text-align: center;">
+                <input type="tel" class="modal-input" id="login-phone" placeholder="Номер: 7700..."
+                    style="text-align: center; font-size: 1.2rem;">
+                <input type="password" class="modal-input" id="login-pass" placeholder="Пароль"
+                    style="text-align: center;">
+                <button class="btn btn-red" onclick="login()">Ворваться</button>
+                <p style="margin-top: 25px; font-weight: 700; cursor: pointer; color: var(--text-muted); text-decoration: underline;"
+                    onclick="toggleRegField()" id="toggle-reg-text">Создать аккаунт</p>
+            </div>
+
+            <div id="view-profile" style="display: none;">
+                <h2 class="section-title">Профиль</h2>
+                <div class="glass"
+                    style="padding: 35px; border-radius: var(--radius-lg); margin-bottom: 20px; background: linear-gradient(145deg, rgba(255,255,255,0.1), transparent);">
+                    <p style="font-weight: 900; font-size: 1.2rem; color: var(--text-muted);" id="profile-name">Имя</p>
+                    <div style="font-family: var(--font-vandal); font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 2px;"
+                        id="profile-phone">...</div>
+
+                    <div
+                        style="background: var(--input-bg); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                            <p
+                                style="font-weight: 800; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">
+                                Лояльность</p>
+                            <span
+                                style="font-weight: 900; background: var(--text-main); color: var(--bg-main); padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;"
+                                id="profile-discount-text">0% СКИДКА</span>
+                        </div>
+                        <div style="font-size: 2.5rem; font-weight: 900; margin: 15px 0 10px;" id="profile-spent">0 ₸
+                        </div>
+                        <div class="loyalty-progress-bg">
+                            <div class="loyalty-progress-fill" id="loyalty-bar"></div>
+                        </div>
+                        <div id="loyalty-next" style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">
+                            ...</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; margin-bottom: 20px;">
+                    <p
+                        style="font-weight: 900; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 15px; text-transform: uppercase;">
+                        История заказов</p>
+                    <div id="profile-history-container">
+                    </div>
+                </div>
+
+                <button class="btn btn-outline" style="border-radius: var(--radius-lg);"
+                    onclick="logout()">Выйти</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="order-modal">
+        <div class="modal-content">
+            <div class="modal-drag"></div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;">
+                <h2 style="font-family: var(--font-vandal); font-size: 3rem; line-height: 1;" id="modal-tariff-name">
+                    TARIF</h2>
+                <div style="text-align: right;">
+                    <span id="promo-badge"
+                        style="display: none; background: var(--accent); color: white; padding: 3px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; vertical-align: top;">ПРОМО</span>
+                    <br>
+                    <span id="modal-final-price" style="font-weight: 900; font-size: 1.8rem; color: var(--accent);">0
+                        ₸</span>
+                </div>
+            </div>
+
+            <div class="bowl-tabs-container" id="bowl-tabs-container" style="display: none;"></div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                <button class="btn btn-outline" id="btn-add-bowl" onclick="addExtraBowl()"
+                    style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-style: dashed;">+ ДОП. ЧАША
+                    (2000 ₸)</button>
+                <button class="btn btn-outline" id="btn-remove-bowl" onclick="removeExtraBowl()"
+                    style="display: none; flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-color: var(--accent); color: var(--accent);">❌
+                    УБРАТЬ</button>
+            </div>
+
+            <label class="modal-label" id="lbl-strength">КРЕПОСТЬ</label>
+            <input type="range" min="0" max="10" value="5" class="range-slider" id="strength-slider">
+            <div class="strength-text" id="strength-display">СРЕДНИЙ</div>
+
+            <label class="modal-label">ВКУСОВЫЕ ПРЕДПОЧТЕНИЯ</label>
+            <div class="flavor-tags">
+                <div class="flavor-tag" onclick="addFlavor('Ягодный')">🍓 Ягоды</div>
+                <div class="flavor-tag" onclick="addFlavor('Цитрус')">🍋 Цитрус</div>
+                <div class="flavor-tag" onclick="addFlavor('Тропики')">🍍 Тропики</div>
+                <div class="flavor-tag" onclick="addFlavor('Сладкий')">🍭 Сладкий</div>
+                <div class="flavor-tag" onclick="addFlavor('Десерт')">🧁 Десерт</div>
+            </div>
+
+            <input type="text" class="modal-input" id="flavor-input" placeholder="Или напиши свой вариант...">
+
+            <label class="modal-label">ХОЛОДОК</label>
+            <div class="ice-toggle">
+                <div class="ice-btn active" onclick="setIce(true)" id="ice-yes">С ХОЛОДКОМ</div>
+                <div class="ice-btn" onclick="setIce(false)" id="ice-no">БЕЗ ЛЬДА</div>
+            </div>
+
+            <label class="modal-label">ПРОМОКОД</label>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <input type="text" class="modal-input" id="promo-input"
+                    style="margin-bottom: 0; text-transform: uppercase;" placeholder="ECЛИ ЕСТЬ">
+                <button class="btn btn-black" style="width: auto; padding: 0 20px;" onclick="applyPromo()">OK</button>
+            </div>
+
+            <label class="modal-label">КУДА ВЕЗТИ?</label>
+            <textarea class="modal-input" id="comment-input" rows="2" placeholder="Адрес, домофон, этаж..."></textarea>
+
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <button class="btn btn-black" style="flex: 1;" onclick="closeOrderModal()">НАЗАД</button>
+                <button class="btn btn-red" style="flex: 2;" id="submit-btn" onclick="submitOrder()">ОФОРМИТЬ</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('tab-home', this)">
+            <svg class="nav-icon">
+                <path d="M12 2L2 12h3v8h14v-8h3L12 2z"></path>
+            </svg>
+            Статус
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-store', this)">
+            <svg class="nav-icon">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Арсенал
+        </div>
+        <div class="nav-item" onclick="switchTab('tab-profile', this)">
+            <svg class="nav-icon">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Профиль
+        </div>
+    </nav>
+
+    <script type="module" src="js/app.js"></script>
+
+    <div id="pwa-prompt" class="pwa-overlay">
+        <div class="pwa-card glass">
+            <div class="pwa-close" id="pwa-close">✖</div>
+            <img src="icons/apple-touch-icon.png" alt="VKASANIE" class="pwa-icon">
+            <h3 style="font-family: var(--font-vandal); font-size: 2rem; margin-bottom: 10px;">VKASANIE APP</h3>
+            <p style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Установи нас
+                на главный экран, чтобы заказывать дым в один клик!</p>
+
+            <div id="pwa-ios-guide"
+                style="display: none; background: var(--input-bg); padding: 15px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;">
+                1. Нажми кнопку <svg style="width:16px;height:16px;vertical-align:middle;margin:0 5px;"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                    <polyline points="16 6 12 2 8 6"></polyline>
+                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                </svg> (Поделиться) внизу экрана<br><br>
+                2. Выбери <b>«На экран "Домой"»</b> ➕
+            </div>
+
+            <button id="pwa-install-btn" class="btn btn-red" style="display: none;">УСТАНОВИТЬ ПРИЛОЖЕНИЕ</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKASANIE | CRM Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="icon" href="icons/favicon.ico" sizes="any">
+    <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <audio id="alert-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h2 style="font-family: 'Permanent Marker'; font-size: 2.5rem; margin-bottom: 20px;">CRM</h2>
+            <input type="password" id="crm-pass" class="login-input" placeholder="Пароль">
+            <button class="btn btn-black" style="width: 100%; padding: 15px;" onclick="checkAuth()">ВОЙТИ В СИСТЕМУ</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px;">Редактировать клиента</h3>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Имя</label>
+            <input type="text" id="edit-name" class="m-input">
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Потрачено всего (₸)</label>
+            <input type="number" id="edit-spent" class="m-input">
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Фикс. скидка (%) (Оставь пустым для авто)</label>
+            <input type="number" id="edit-discount" class="m-input" placeholder="Например: 25">
+            
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button class="btn btn-outline" style="flex: 1;" onclick="closeEditModal()">Отмена</button>
+                <button class="btn btn-black" style="flex: 1;" onclick="saveClientEdit()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="promo-modal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px;">Настройки промокода</h3>
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Код (Например: HOOKAH2026)</label>
+            <input type="text" id="promo-code-input" class="m-input" style="text-transform: uppercase;">
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Скидка (%)</label>
+            <input type="number" id="promo-discount-input" class="m-input" placeholder="Например: 15">
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Макс. всего использований (0 = безлимит)</label>
+            <input type="number" id="promo-global-limit" class="m-input" value="500">
+            
+            <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Макс. на 1 аккаунт (0 = безлимит)</label>
+            <input type="number" id="promo-user-limit" class="m-input" value="1">
+            
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button class="btn btn-outline" style="flex: 1;" onclick="closePromoModal()">Отмена</button>
+                <button class="btn btn-black" style="flex: 1;" onclick="savePromo()">Создать / Обновить</button>
+            </div>
+        </div>
+    </div>
+
+    <aside>
+        <div class="logo">VKASANIE</div>
+        <div class="nav-link active" id="nav-dash" onclick="switchView('dashboard')">Дашборд</div>
+        <div class="nav-link" id="nav-clients" onclick="switchView('clients')">База клиентов</div>
+        <div class="nav-link" id="nav-promos" onclick="switchView('promos')">Промокоды</div>
+        <div class="spacer"></div>
+        <div class="nav-link" onclick="sessionStorage.clear(); location.reload();">Выход</div>
+    </aside>
+
+    <main>
+        <header>
+            <h1 id="page-title">Обзор бизнеса</h1>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button id="btn-export" class="btn btn-outline" style="display: none; padding: 8px 15px;" onclick="exportToCSV()">Экспорт CSV</button>
+                <div id="clock" style="font-weight: 700; color: #666;">--:--</div>
+            </div>
+        </header>
+
+        <div id="view-dashboard">
+            <div class="grid-top">
+                <div class="stat-card"><div class="stat-value" id="s-orders">0</div><div class="stat-label">Заказов (Завершено)</div></div>
+                <div class="stat-card"><div class="stat-value" id="s-revenue">0 ₸</div><div class="stat-label">Выручка</div></div>
+                <div class="stat-card"><div class="stat-value" id="s-active" style="color: #ef4444;">0</div><div class="stat-label">В работе (Новых: <span id="s-new">0</span>)</div></div>
+                <div class="stat-card"><div class="stat-value" id="s-avg">0 ₸</div><div class="stat-label">Средний чек</div></div>
+            </div>
+
+            <div class="grid-charts">
+                <div class="chart-wrap">
+                    <canvas id="chartLine"></canvas>
+                </div>
+                <div class="chart-wrap">
+                    <canvas id="chartDoughnut"></canvas>
+                </div>
+            </div>
+
+            <div class="orders-header">ПОТОК ЗАКАЗОВ (LIVE)</div>
+            <div class="orders-grid" id="orders-container"></div>
+        </div>
+
+        <div id="view-clients" style="display: none;">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Телефон</th>
+                            <th>Потрачено</th>
+                            <th>Текущая Скидка</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clients-tbody">
+                        <tr><td colspan="5" style="text-align:center;">Загрузка данных...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-promos" style="display: none;">
+            <button class="btn btn-black" style="width: auto; padding: 12px 25px; margin-bottom: 20px;" onclick="openPromoModal()">+ Создать промокод</button>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Код</th>
+                            <th>Скидка</th>
+                            <th>Использовано / Всего</th>
+                            <th>Лимит на юзера</th>
+                            <th>Статус</th>
+                            <th>Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promos-tbody">
+                        <tr><td colspan="6" style="text-align:center;">Загрузка данных...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
