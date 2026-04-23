@@ -25,6 +25,33 @@ export class AuthManager {
         if (logoutBtn) {
             logoutBtn.addEventListener('click', () => this.logout());
         }
+
+        const phoneInput = document.getElementById('login-phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => this.formatPhoneInput(e));
+        }
+    }
+
+    formatPhoneInput(e) {
+        let el = e.target;
+        let val = el.value.replace(/\D/g, '');
+        
+        if (!val) {
+            el.value = '';
+            return;
+        }
+
+        // Always start with 7 for Kazakhstan
+        if (val[0] === '8') val = '7' + val.slice(1);
+        if (val[0] !== '7') val = '7' + val;
+
+        let formatted = '+7';
+        if (val.length > 1) formatted += ' (' + val.substring(1, 4);
+        if (val.length >= 5) formatted += ') ' + val.substring(4, 7);
+        if (val.length >= 8) formatted += '-' + val.substring(7, 9);
+        if (val.length >= 10) formatted += '-' + val.substring(9, 11);
+        
+        el.value = formatted;
     }
 
     toggleRegField() {
@@ -52,12 +79,12 @@ export class AuthManager {
         const ageCheck = document.getElementById('age-check');
 
         const name = nameInput.value.trim();
-        const phone = phoneInput.value.trim();
+        const phone = phoneInput.value.replace(/\D/g, ''); // Strip non-digits for database
         const pass = passInput.value.trim();
         const isRegMode = nameInput.style.display !== 'none' && nameInput.style.display !== '';
 
-        if (phone.length < 10 || pass.length < 4) {
-            return this.app.ui.showToast("⚠️ Введи номер (от 10 цифр) и пароль (от 4 символов)");
+        if (phone.length < 11 || pass.length < 4) {
+            return this.app.ui.showToast("⚠️ Введи полный номер и пароль (от 4 символов)");
         }
         
         try {
