@@ -131,6 +131,12 @@
                     style="text-align: center; font-size: 1.2rem;">
                 <input type="password" class="modal-input" id="login-pass" placeholder="Пароль"
                     style="text-align: center;">
+                <div id="age-check-container" style="display: none; margin: 15px 0; text-align: left; background: var(--input-bg); padding: 12px; border-radius: var(--radius-sm);">
+                    <label style="display: flex; align-items: center; gap: 10px; justify-content: center; cursor: pointer;">
+                        <input type="checkbox" id="age-check" style="width: 20px; height: 20px; accent-color: var(--accent);">
+                        <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">Мне есть 21 год</span>
+                    </label>
+                </div>
                 <button class="btn btn-red" onclick="login()">Ворваться</button>
                 <p style="margin-top: 25px; font-weight: 700; cursor: pointer; color: var(--text-muted); text-decoration: underline;"
                     onclick="toggleRegField()" id="toggle-reg-text">Создать аккаунт</p>

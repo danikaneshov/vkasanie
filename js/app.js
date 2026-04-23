@@ -42,11 +42,14 @@ window.switchTab = function(tabId, el = null) {
 window.toggleRegField = function() {
     const f = document.getElementById('reg-name');
     const btnText = document.getElementById('toggle-reg-text');
+    const ageContainer = document.getElementById('age-check-container');
     if (f.style.display === 'none') {
         f.style.display = 'block';
+        if (ageContainer) ageContainer.style.display = 'block';
         btnText.innerText = 'Уже есть аккаунт? Войти';
     } else {
         f.style.display = 'none';
+        if (ageContainer) ageContainer.style.display = 'none';
         btnText.innerText = 'Создать аккаунт';
     }
 };
@@ -73,6 +76,11 @@ window.login = async function() {
         if (!docSnap.exists()) {
             if (!isRegMode) return showToast("❌ Аккаунт не найден. Нажми 'Создать аккаунт'");
             if (!name) return showToast("⚠️ Укажи имя для регистрации!");
+            
+            const ageCheck = document.getElementById('age-check');
+            if (isRegMode && ageCheck && !ageCheck.checked) {
+                return showToast("⚠️ Подтверди, что тебе есть 21 год!");
+            }
             
             await setDoc(doc(db, "users", phone), { name: name, password: pass, totalSpent: 0, usedPromos: {} });
             showToast("🎉 Аккаунт создан!");
