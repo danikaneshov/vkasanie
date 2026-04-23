@@ -120,7 +120,17 @@ export class ProfileManager {
             document.getElementById('view-login').style.display = 'block';
             document.getElementById('view-profile').style.display = 'none';
             document.getElementById('home-empty').style.display = 'block';
-            document.getElementById('home-trackers-container').style.display = 'none';
+            
+            const trackersContainer = document.getElementById('home-trackers-container');
+            if (trackersContainer) {
+                trackersContainer.style.display = 'none';
+                trackersContainer.innerHTML = '';
+            }
+            
+            const profileHistoryContainer = document.getElementById('profile-history-container');
+            if (profileHistoryContainer) {
+                profileHistoryContainer.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-weight:600;">Пока пусто. Время дыметь!</p>';
+            }
             
             ['solo', 'double', 'team'].forEach(item => {
                 const priceEl = document.getElementById(`price-${item}`);
@@ -171,17 +181,15 @@ export class ProfileManager {
                         </div>
                         ${o.status === 'new' ? `<button class="btn btn-outline btn-cancel-order" data-id="${o.id}" style="border-color:transparent; color:var(--text-muted); padding: 12px; margin-top: 10px;">Отменить заказ</button>` : ''}
                     </div>`;
-                } else {
+                } else if (o.status === 'done') {
                     const timeStr = new Date(o.createdAt).toLocaleDateString('ru-RU', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
-                    const isDone = o.status === 'done';
-                    const statusText = isDone ? '✅ ВЫПОЛНЕН' : '❌ ОТМЕНЕН';
-                    const color = isDone ? '#10b981' : '#ef4444';
+                    const color = '#10b981';
                     
                     historyHtml += `
                     <div class="glass" style="padding: 18px; border-radius: var(--radius-md); margin-bottom: 12px; font-size: 0.9rem; border-left: 4px solid ${color};">
                         <div style="display:flex; justify-content:space-between; margin-bottom: 8px; align-items: center;">
                             <span style="font-weight: 900; font-family: var(--font-vandal); font-size: 1.2rem;">${o.tariff}</span>
-                            <span style="font-weight: 900; color: ${color}; font-size: 0.8rem;">${statusText}</span>
+                            <span style="font-weight: 900; color: ${color}; font-size: 0.8rem;">✅ ВЫПОЛНЕН</span>
                         </div>
                         <div style="color: var(--text-muted); font-weight: 600;">${timeStr} • <span style="color: var(--text-main); font-weight: 800;">${o.price} ₸</span></div>
                     </div>`;
