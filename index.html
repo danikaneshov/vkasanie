@@ -33,7 +33,7 @@
     <header>
         <div class="logo">VKASANIE</div>
         <div style="display: flex; gap: 15px; align-items: center;">
-            <div id="theme-btn" onclick="toggleTheme()"
+            <div id="theme-btn"
                 style="cursor: pointer; color: var(--text-main); background: var(--input-bg); padding: 8px; border-radius: 50%;">
                 <svg id="icon-moon" style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
@@ -67,7 +67,7 @@
                 </svg>
                 <p style="font-weight: 700; font-size: 1.1rem;">Готов к дыму?</p>
                 <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Сделай свой первый заказ.</p>
-                <button class="btn btn-red" style="margin-top: 25px;" onclick="switchTab('tab-store')">ОТКРЫТЬ
+                <button class="btn btn-red" id="btn-to-store" style="margin-top: 25px;">ОТКРЫТЬ
                     АРСЕНАЛ</button>
             </div>
             <div id="home-trackers-container" style="display: none;"></div>
@@ -86,7 +86,7 @@
                 </div>
                 <p class="app-card-desc">Отличный выбор для одного или в паре.</p>
                 <p class="app-card-kit">1 аппарат • 1 забивка • 4 угля • плитка</p>
-                <button class="btn btn-black" onclick="openOrderModal('SOLO', 7000)">Выбрать</button>
+                <button class="btn btn-black btn-order" data-tariff="SOLO" data-price="7000">Выбрать</button>
             </div>
 
             <div class="app-card glass"
@@ -102,7 +102,7 @@
                 </div>
                 <p class="app-card-desc">Хит продаж. Две забивки — выгоднее!</p>
                 <p class="app-card-kit">1 аппарат • 2 забивки • 8 углей • плитка</p>
-                <button class="btn btn-red" onclick="openOrderModal('DOUBLE', 9000)">Выбрать</button>
+                <button class="btn btn-red btn-order" data-tariff="DOUBLE" data-price="9000">Выбрать</button>
             </div>
 
             <div class="app-card glass"
@@ -117,7 +117,7 @@
                 </div>
                 <p class="app-card-desc">Идеально для тусовки с друзьями.</p>
                 <p class="app-card-kit">2 аппарата • 4 забивки • 16 углей • 2 плитки</p>
-                <button class="btn btn-cyan" onclick="openOrderModal('TEAM', 16000)">Выбрать</button>
+                <button class="btn btn-cyan btn-order" data-tariff="TEAM" data-price="16000">Выбрать</button>
             </div>
         </div>
 
@@ -137,9 +137,9 @@
                         <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">Мне есть 21 год</span>
                     </label>
                 </div>
-                <button class="btn btn-red" onclick="login()">Ворваться</button>
+                <button class="btn btn-red" id="btn-login">Ворваться</button>
                 <p style="margin-top: 25px; font-weight: 700; cursor: pointer; color: var(--text-muted); text-decoration: underline;"
-                    onclick="toggleRegField()" id="toggle-reg-text">Создать аккаунт</p>
+                    id="toggle-reg-text">Создать аккаунт</p>
             </div>
 
             <div id="view-profile" style="display: none;">
@@ -179,7 +179,7 @@
                 </div>
 
                 <button class="btn btn-outline" style="border-radius: var(--radius-lg);"
-                    onclick="logout()">Выйти</button>
+                    id="btn-logout">Выйти</button>
             </div>
         </div>
     </div>
@@ -202,10 +202,10 @@
             <div class="bowl-tabs-container" id="bowl-tabs-container" style="display: none;"></div>
 
             <div style="display: flex; gap: 10px; margin-bottom: 25px;">
-                <button class="btn btn-outline" id="btn-add-bowl" onclick="addExtraBowl()"
+                <button class="btn btn-outline" id="btn-add-bowl"
                     style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-style: dashed;">+ ДОП. ЧАША
                     (2000 ₸)</button>
-                <button class="btn btn-outline" id="btn-remove-bowl" onclick="removeExtraBowl()"
+                <button class="btn btn-outline" id="btn-remove-bowl"
                     style="display: none; flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-color: var(--accent); color: var(--accent);">❌
                     УБРАТЬ</button>
             </div>
@@ -216,46 +216,46 @@
 
             <label class="modal-label">ВКУСОВЫЕ ПРЕДПОЧТЕНИЯ</label>
             <div class="flavor-tags">
-                <div class="flavor-tag" onclick="addFlavor('Ягодный')">🍓 Ягоды</div>
-                <div class="flavor-tag" onclick="addFlavor('Цитрус')">🍋 Цитрус</div>
-                <div class="flavor-tag" onclick="addFlavor('Тропики')">🍍 Тропики</div>
-                <div class="flavor-tag" onclick="addFlavor('Сладкий')">🍭 Сладкий</div>
-                <div class="flavor-tag" onclick="addFlavor('Десерт')">🧁 Десерт</div>
+                <div class="flavor-tag" data-flavor="Ягодный">🍓 Ягоды</div>
+                <div class="flavor-tag" data-flavor="Цитрус">🍋 Цитрус</div>
+                <div class="flavor-tag" data-flavor="Тропики">🍍 Тропики</div>
+                <div class="flavor-tag" data-flavor="Сладкий">🍭 Сладкий</div>
+                <div class="flavor-tag" data-flavor="Десерт">🧁 Десерт</div>
             </div>
 
             <input type="text" class="modal-input" id="flavor-input" placeholder="Или напиши свой вариант...">
 
             <label class="modal-label">ХОЛОДОК</label>
             <div class="ice-toggle">
-                <div class="ice-btn active" onclick="setIce(true)" id="ice-yes">С ХОЛОДКОМ</div>
-                <div class="ice-btn" onclick="setIce(false)" id="ice-no">БЕЗ ЛЬДА</div>
+                <div class="ice-btn active" id="ice-yes">С ХОЛОДКОМ</div>
+                <div class="ice-btn" id="ice-no">БЕЗ ЛЬДА</div>
             </div>
 
             <label class="modal-label">ПРОМОКОД</label>
             <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                 <input type="text" class="modal-input" id="promo-input"
                     style="margin-bottom: 0; text-transform: uppercase;" placeholder="ECЛИ ЕСТЬ">
-                <button class="btn btn-black" style="width: auto; padding: 0 20px;" onclick="applyPromo()">OK</button>
+                <button class="btn btn-black" id="btn-apply-promo" style="width: auto; padding: 0 20px;">OK</button>
             </div>
 
             <label class="modal-label">КУДА ВЕЗТИ?</label>
             <textarea class="modal-input" id="comment-input" rows="2" placeholder="Адрес, домофон, этаж..."></textarea>
 
             <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <button class="btn btn-black" style="flex: 1;" onclick="closeOrderModal()">НАЗАД</button>
-                <button class="btn btn-red" style="flex: 2;" id="submit-btn" onclick="submitOrder()">ОФОРМИТЬ</button>
+                <button class="btn btn-black" id="btn-close-modal" style="flex: 1;">НАЗАД</button>
+                <button class="btn btn-red" style="flex: 2;" id="submit-btn">ОФОРМИТЬ</button>
             </div>
         </div>
     </div>
 
     <nav class="bottom-nav">
-        <div class="nav-item active" onclick="switchTab('tab-home', this)">
+        <div class="nav-item active" data-target="tab-home">
             <svg class="nav-icon">
                 <path d="M12 2L2 12h3v8h14v-8h3L12 2z"></path>
             </svg>
             Статус
         </div>
-        <div class="nav-item" onclick="switchTab('tab-store', this)">
+        <div class="nav-item" data-target="tab-store">
             <svg class="nav-icon">
                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                 <polyline points="2 17 12 22 22 17"></polyline>
@@ -263,7 +263,7 @@
             </svg>
             Арсенал
         </div>
-        <div class="nav-item" onclick="switchTab('tab-profile', this)">
+        <div class="nav-item" data-target="tab-profile">
             <svg class="nav-icon">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
