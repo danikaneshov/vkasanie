@@ -173,30 +173,30 @@ export class ProfileManager {
                     let accentColor = o.status === 'new' ? 'var(--text-muted)' : (o.status === 'accepted' ? '#ff0055' : '#00e5ff');
 
                     activeHtml += `
-                    <div class="app-card" style="background: var(--bg-card); border-radius: 0; padding: 24px; box-shadow: var(--brutal-shadow); margin-bottom: 20px; border: var(--border-width) solid var(--border-color); position: relative;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--border-width) solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px;">
+                    <div class="app-card glass" style="padding: 24px; margin-bottom: 20px; position: relative;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px;">
                             <p style="font-family: var(--font-heading); font-weight: 900; text-transform: uppercase; font-size: 0.85rem; color: var(--text-main); margin: 0;">Текущий заказ</p>
-                            <span style="background: var(--text-main); color: var(--bg-main); padding: 4px 10px; border: var(--border-width) solid var(--border-color); font-family: var(--font-heading); font-size: 0.75rem; font-weight: 900; box-shadow: var(--brutal-shadow-hover); text-transform: uppercase;">${statusMap[o.status] || o.status}</span>
+                            <span style="background: ${accentColor}; color: #fff; padding: 6px 14px; border-radius: 20px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">${statusMap[o.status] || o.status}</span>
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
                             <h3 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; margin: 0; letter-spacing: -1px; text-transform: uppercase; color: var(--text-main);">${o.tariff}</h3>
                             <p style="margin: 0; font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; color: var(--accent);">${o.price} ₸</p>
                         </div>
-                        ${o.status === 'new' ? `<button class="btn btn-cancel-order btn-outline" data-id="${o.id}">Отменить заказ</button>` : ''}
+                        ${o.status === 'new' ? `<button class="btn btn-cancel-order btn-outline" data-id="${o.id}" style="border-color:transparent; color:var(--text-muted);">Отменить заказ</button>` : ''}
                     </div>`;
                 } else if (o.status === 'done') {
                     const timeStr = new Date(o.createdAt).toLocaleDateString('ru-RU', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
                     const color = '#10b981';
                     
                     historyHtml += `
-                    <div class="history-card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--bg-card); border-radius: 0; margin-bottom: 12px; border: var(--border-width) solid var(--border-color); box-shadow: var(--brutal-shadow-hover);">
+                    <div class="history-card glass" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; margin-bottom: 12px; border-radius: var(--radius-md);">
                         <div>
                             <div style="font-family: var(--font-heading); font-weight: 900; font-size: 1.2rem; margin-bottom: 4px; color: var(--text-main); text-transform: uppercase;">${o.tariff}</div>
                             <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">${timeStr}</div>
                         </div>
                         <div style="text-align: right;">
                             <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-main); font-size: 1.1rem; margin-bottom: 6px;">${o.price} ₸</div>
-                            <div style="font-size: 0.7rem; color: var(--text-main); font-weight: 900; background: ${color}; padding: 4px 8px; border: 2px solid var(--border-color); letter-spacing: 0.5px;">ВЫПОЛНЕН</div>
+                            <div style="font-size: 0.7rem; color: ${color}; font-weight: 900; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 12px; letter-spacing: 0.5px;">ВЫПОЛНЕН</div>
                         </div>
                     </div>`;
                 }
