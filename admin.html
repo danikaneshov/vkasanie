@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NA RAHATE | CRM Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="icon" href="icons/favicon.ico" sizes="any">
     <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
@@ -17,7 +19,7 @@
 
     <div id="login-screen">
         <div class="login-box">
-            <h2 style="font-family: 'Permanent Marker'; font-size: 2.5rem; margin-bottom: 20px;">CRM</h2>
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; text-transform: uppercase; color: #2c2420;">CRM</h2>
             <input type="password" id="crm-pass" class="login-input" placeholder="Пароль">
             <button class="btn btn-black" style="width: 100%; padding: 15px;" onclick="checkAuth()">ВОЙТИ В СИСТЕМУ</button>
         </div>
@@ -25,7 +27,7 @@
 
     <div class="modal-overlay" id="edit-modal">
         <div class="modal-content">
-            <h3 style="margin-bottom: 20px;">Редактировать клиента</h3>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px; color: #2c2420;">Редактировать клиента</h3>
             <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Имя</label>
             <input type="text" id="edit-name" class="m-input">
             
@@ -44,7 +46,7 @@
 
     <div class="modal-overlay" id="promo-modal">
         <div class="modal-content">
-            <h3 style="margin-bottom: 20px;">Настройки промокода</h3>
+            <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px; color: #2c2420;">Настройки промокода</h3>
             
             <label style="font-size: 0.8rem; font-weight: 700; color: #666;">Код (Например: HOOKAH2026)</label>
             <input type="text" id="promo-code-input" class="m-input" style="text-transform: uppercase;">
@@ -66,7 +68,7 @@
     </div>
 
     <aside>
-        <div class="logo">NA RAHATE</div>
+        <div class="logo" style="font-family: 'Space Grotesk', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; text-transform: uppercase;">NA RAHATE</div>
         <div class="nav-link active" id="nav-dash" onclick="switchView('dashboard')">Дашборд</div>
         <div class="nav-link" id="nav-clients" onclick="switchView('clients')">База клиентов</div>
         <div class="nav-link" id="nav-promos" onclick="switchView('promos')">Промокоды</div>
@@ -76,7 +78,7 @@
 
     <main>
         <header>
-            <h1 id="page-title">Обзор бизнеса</h1>
+            <h1 id="page-title" style="font-family: 'Space Grotesk', sans-serif; font-weight: 900; letter-spacing: -1px; color: #2c2420;">Обзор бизнеса</h1>
             <div style="display: flex; gap: 15px; align-items: center;">
                 <button id="btn-export" class="btn btn-outline" style="display: none; padding: 8px 15px;" onclick="exportToCSV()">Экспорт CSV</button>
                 <div id="clock" style="font-weight: 700; color: #666;">--:--</div>
