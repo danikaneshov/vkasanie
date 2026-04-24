@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0a0a0a">
     <title>NA RAHATE | Premium Hookah</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Permanent+Marker&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="site.webmanifest">
     <link rel="icon" href="icons/favicon.ico" sizes="any">
@@ -85,15 +85,14 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Отличный выбор для одного или в паре.</p>
-                <p class="app-card-kit">1 аппарат • 1 забивка • 4 угля • плитка</p>
+                <p class="app-card-kit">1 АППАРАТ • 1 ЗАБИВКА • 4 УГЛЯ • ПЛИТКА</p>
                 <button class="btn btn-black btn-order" data-tariff="SOLO" data-price="7000">Выбрать</button>
             </div>
 
             <div class="app-card glass"
-                style="border: 1px solid var(--accent); box-shadow: 0 10px 30px rgba(224, 122, 95, 0.2);">
+                style="border-color: var(--accent); box-shadow: 4px 4px 0px var(--accent);">
                 <div class="app-card-header">
-                    <span class="app-card-title"
-                        style="background: linear-gradient(90deg, #e07a5f, #f2cc8f); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DOUBLE</span>
+                    <span class="app-card-title" style="color: var(--accent);">DOUBLE</span>
                     <div style="text-align: right;">
                         <span class="discount-badge" id="badge-double" style="display: none;">СКИДКА</span>
                         <span class="old-price" id="old-price-double" style="display: none;">9 000 ₸</span>
@@ -101,12 +100,12 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Хит продаж. Две забивки — выгоднее!</p>
-                <p class="app-card-kit">1 аппарат • 2 забивки • 8 углей • плитка</p>
+                <p class="app-card-kit">1 АППАРАТ • 2 ЗАБИВКИ • 8 УГЛЕЙ • ПЛИТКА</p>
                 <button class="btn btn-red btn-order" data-tariff="DOUBLE" data-price="9000">Выбрать</button>
             </div>
 
             <div class="app-card glass"
-                style="border: 1px solid var(--secondary); box-shadow: 0 10px 30px rgba(242, 204, 143, 0.2);">
+                style="border-color: var(--secondary); box-shadow: 4px 4px 0px var(--secondary);">
                 <div class="app-card-header">
                     <span class="app-card-title" style="color: var(--secondary);">TEAM</span>
                     <div style="text-align: right;">
@@ -116,14 +115,14 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Идеально для тусовки с друзьями.</p>
-                <p class="app-card-kit">2 аппарата • 4 забивки • 16 углей • 2 плитки</p>
+                <p class="app-card-kit">2 АППАРАТА • 4 ЗАБИВКИ • 16 УГЛЕЙ • 2 ПЛИТКИ</p>
                 <button class="btn btn-cyan btn-order" data-tariff="TEAM" data-price="16000">Выбрать</button>
             </div>
         </div>
 
         <div id="tab-profile" class="tab-pane">
             <div id="view-login" class="glass"
-                style="padding: 40px 20px; border-radius: var(--radius-lg); text-align: center;">
+                style="padding: 40px 20px; text-align: center;">
                 <h2 class="section-title">Вход</h2>
                 <input type="text" class="modal-input" id="reg-name" placeholder="Твое имя (для новых)"
                     style="display: none; text-align: center;">
@@ -145,22 +144,22 @@
             <div id="view-profile" style="display: none;">
                 <h2 class="section-title">Профиль</h2>
                 <div class="glass"
-                    style="padding: 35px; border-radius: var(--radius-lg); margin-bottom: 20px; background: linear-gradient(145deg, rgba(255,255,255,0.1), transparent);">
+                    style="padding: 30px; margin-bottom: 20px;">
                     <p style="font-weight: 900; font-size: 1.2rem; color: var(--text-muted);" id="profile-name">Имя</p>
-                    <div style="font-family: var(--font-vandal); font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 2px;"
+                    <div style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 30px; font-weight: 900; letter-spacing: -1px; color: var(--text-main);"
                         id="profile-phone">...</div>
 
                     <div
-                        style="background: var(--input-bg); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        style="background: var(--input-bg); padding: 25px; border: var(--border-width) solid var(--border-color); box-shadow: inset 2px 2px 0px rgba(0,0,0,0.05);">
                         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
                             <p
                                 style="font-weight: 800; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">
                                 Лояльность</p>
                             <span
-                                style="font-weight: 900; background: var(--text-main); color: var(--bg-main); padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;"
+                                style="font-weight: 900; background: var(--text-main); color: var(--bg-main); padding: 6px 12px; border: var(--border-width) solid var(--border-color); font-size: 0.9rem; box-shadow: var(--brutal-shadow-hover);"
                                 id="profile-discount-text">0% СКИДКА</span>
                         </div>
-                        <div style="font-size: 2.5rem; font-weight: 900; margin: 15px 0 10px;" id="profile-spent">0 ₸
+                        <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; margin: 15px 0 10px;" id="profile-spent">0 ₸
                         </div>
                         <div class="loyalty-progress-bg">
                             <div class="loyalty-progress-fill" id="loyalty-bar"></div>
@@ -170,8 +169,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-outline" style="border-radius: var(--radius-lg);"
-                    id="btn-logout">Выйти</button>
+                <button class="btn btn-outline" id="btn-logout">Выйти</button>
 
                 <div style="margin-top: 30px; margin-bottom: 20px;">
                     <p
@@ -188,13 +186,13 @@
         <div class="modal-content">
             <div class="modal-drag"></div>
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;">
-                <h2 style="font-family: var(--font-vandal); font-size: 3rem; line-height: 1;" id="modal-tariff-name">
+                <h2 style="font-family: var(--font-heading); font-size: 3rem; line-height: 1; font-weight: 900; letter-spacing: -2px; text-transform: uppercase;" id="modal-tariff-name">
                     TARIF</h2>
                 <div style="text-align: right;">
                     <span id="promo-badge"
-                        style="display: none; background: var(--accent); color: white; padding: 3px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; vertical-align: top;">ПРОМО</span>
+                        style="display: none; background: var(--accent); color: white; padding: 4px 8px; border: var(--border-width) solid var(--border-color); font-size: 0.7rem; font-weight: 900; vertical-align: top; box-shadow: var(--brutal-shadow-hover);">ПРОМО</span>
                     <br>
-                    <span id="modal-final-price" style="font-weight: 900; font-size: 1.8rem; color: var(--accent);">0
+                    <span id="modal-final-price" style="font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--accent);">0
                         ₸</span>
                 </div>
             </div>
@@ -203,7 +201,7 @@
 
             <div style="display: flex; gap: 10px; margin-bottom: 25px;">
                 <button class="btn btn-outline" id="btn-add-bowl"
-                    style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-style: dashed;">+ ДОП. ЧАША
+                    style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem;">+ ДОП. ЧАША
                     (2000 ₸)</button>
                 <button class="btn btn-outline" id="btn-remove-bowl"
                     style="display: none; flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-color: var(--accent); color: var(--accent);">❌
@@ -278,7 +276,7 @@
         <div class="pwa-card glass">
             <div class="pwa-close" id="pwa-close">✖</div>
             <img src="icons/apple-touch-icon.png" alt="NA RAHATE" class="pwa-icon">
-            <h3 style="font-family: var(--font-vandal); font-size: 2rem; margin-bottom: 10px;">NA RAHATE APP</h3>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 10px; font-weight: 900;">NA RAHATE APP</h3>
             <p style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Установи нас
                 на главный экран, чтобы заказывать дым в один клик!</p>
 

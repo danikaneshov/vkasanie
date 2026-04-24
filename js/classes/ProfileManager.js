@@ -169,29 +169,35 @@ export class ProfileManager {
             ordersArray.forEach(o => {
                 if (!['done', 'canceled_client', 'canceled_admin'].includes(o.status)) {
                     hasActive = true;
-                    const statusMap = { 'new': 'ИЩЕМ МАСТЕРА ⏳', 'accepted': 'ДЫМ УЖЕ ГОТОВИТСЯ 🔥', 'courier': 'КУРЬЕР МЧИТСЯ 🚀' };
-                    let bgStyle = o.status === 'new' ? 'var(--input-bg)' : (o.status === 'accepted' ? 'linear-gradient(45deg, rgba(255,0,85,0.2), transparent)' : 'linear-gradient(45deg, rgba(0,229,255,0.2), transparent)');
+                    const statusMap = { 'new': 'ИЩЕМ МАСТЕРА', 'accepted': 'ДЫМ ГОТОВИТСЯ', 'courier': 'В ПУТИ' };
+                    let accentColor = o.status === 'new' ? 'var(--text-muted)' : (o.status === 'accepted' ? '#ff0055' : '#00e5ff');
 
                     activeHtml += `
-                    <div class="app-card glass" style="border-top: 4px solid var(--accent); overflow:hidden;">
-                        <p style="font-weight: 800; font-size: 0.8rem; color: var(--accent); margin-bottom: 5px;">ТВОЙ АППАРАТ</p>
-                        <h3 style="font-family: var(--font-vandal); font-size: 2.5rem;">${o.tariff}</h3>
-                        <div style="background: ${bgStyle}; padding: 20px; border-radius: var(--radius-md); margin-top: 20px; font-weight: 900; font-size: 1.1rem; border: 1px solid var(--border-color);">
-                            ${statusMap[o.status] || o.status}
+                    <div class="app-card" style="background: var(--bg-card); border-radius: 0; padding: 24px; box-shadow: var(--brutal-shadow); margin-bottom: 20px; border: var(--border-width) solid var(--border-color); position: relative;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--border-width) solid var(--border-color); padding-bottom: 12px; margin-bottom: 16px;">
+                            <p style="font-family: var(--font-heading); font-weight: 900; text-transform: uppercase; font-size: 0.85rem; color: var(--text-main); margin: 0;">Текущий заказ</p>
+                            <span style="background: var(--text-main); color: var(--bg-main); padding: 4px 10px; border: var(--border-width) solid var(--border-color); font-family: var(--font-heading); font-size: 0.75rem; font-weight: 900; box-shadow: var(--brutal-shadow-hover); text-transform: uppercase;">${statusMap[o.status] || o.status}</span>
                         </div>
-                        ${o.status === 'new' ? `<button class="btn btn-outline btn-cancel-order" data-id="${o.id}" style="border-color:transparent; color:var(--text-muted); padding: 12px; margin-top: 10px;">Отменить заказ</button>` : ''}
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+                            <h3 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; margin: 0; letter-spacing: -1px; text-transform: uppercase; color: var(--text-main);">${o.tariff}</h3>
+                            <p style="margin: 0; font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; color: var(--accent);">${o.price} ₸</p>
+                        </div>
+                        ${o.status === 'new' ? `<button class="btn btn-cancel-order btn-outline" data-id="${o.id}">Отменить заказ</button>` : ''}
                     </div>`;
                 } else if (o.status === 'done') {
                     const timeStr = new Date(o.createdAt).toLocaleDateString('ru-RU', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
                     const color = '#10b981';
                     
                     historyHtml += `
-                    <div class="glass" style="padding: 18px; border-radius: var(--radius-md); margin-bottom: 12px; font-size: 0.9rem; border-left: 4px solid ${color};">
-                        <div style="display:flex; justify-content:space-between; margin-bottom: 8px; align-items: center;">
-                            <span style="font-weight: 900; font-family: var(--font-vandal); font-size: 1.2rem;">${o.tariff}</span>
-                            <span style="font-weight: 900; color: ${color}; font-size: 0.8rem;">✅ ВЫПОЛНЕН</span>
+                    <div class="history-card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--bg-card); border-radius: 0; margin-bottom: 12px; border: var(--border-width) solid var(--border-color); box-shadow: var(--brutal-shadow-hover);">
+                        <div>
+                            <div style="font-family: var(--font-heading); font-weight: 900; font-size: 1.2rem; margin-bottom: 4px; color: var(--text-main); text-transform: uppercase;">${o.tariff}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">${timeStr}</div>
                         </div>
-                        <div style="color: var(--text-muted); font-weight: 600;">${timeStr} • <span style="color: var(--text-main); font-weight: 800;">${o.price} ₸</span></div>
+                        <div style="text-align: right;">
+                            <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-main); font-size: 1.1rem; margin-bottom: 6px;">${o.price} ₸</div>
+                            <div style="font-size: 0.7rem; color: var(--text-main); font-weight: 900; background: ${color}; padding: 4px 8px; border: 2px solid var(--border-color); letter-spacing: 0.5px;">ВЫПОЛНЕН</div>
+                        </div>
                     </div>`;
                 }
             });
