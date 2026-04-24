@@ -335,7 +335,7 @@ export class OrderManager {
             let bowlsText = bowlsArrayForDb.map((b, i) => `💨 Чаша ${i+1}: ${b.flavor} (${b.strength}) ${b.ice ? '🧊' : '🔥'}`).join('\n');
             let promoText = this.appliedPromoObj ? `\n🎟 Промокод: ${this.appliedPromoObj.code}` : "";
 
-            let textMessage = `🔥 <b>НОВЫЙ ЗАКАЗ vKasanie!</b> 🔥\n\n` +
+            let textMessage = `🔥 <b>НОВЫЙ ЗАКАЗ Na Rahate!</b> 🔥\n\n` +
                               `👤 <b>Клиент:</b> ${orderData.name} (${orderData.phone})\n` +
                               `📦 <b>Тариф:</b> ${orderData.tariff}\n` +
                               `💰 <b>Сумма:</b> ${orderData.price} ₸${promoText}\n\n` +
