@@ -30,7 +30,7 @@ export class UIManager {
                 splash.style.opacity = '0';
                 setTimeout(() => splash.style.display = 'none', 600);
             }
-        }, 1400);
+        }, 600);
     }
 
     vibrate() {
@@ -55,7 +55,7 @@ export class UIManager {
         const body = document.body;
         const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         body.setAttribute('data-theme', newTheme);
-        
+
         if (this.iconMoon) this.iconMoon.style.display = newTheme === 'dark' ? 'block' : 'none';
         if (this.iconSun) this.iconSun.style.display = newTheme === 'light' ? 'block' : 'none';
         if (this.ambientBg) this.ambientBg.style.display = newTheme === 'dark' ? 'block' : 'none';
