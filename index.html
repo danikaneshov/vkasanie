@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0a0a0a">
-    <title>NA RAHATE | Premium Hookah</title>
+    <title>ЯБВДУЛ | Premium Hookah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="site.webmanifest">
     <link rel="icon" href="icons/favicon.ico" sizes="any">
@@ -24,14 +24,14 @@
     </div>
 
     <div id="splash-screen">
-        <div class="splash-logo" style="background: transparent; box-shadow: none; border: none; font-size: 4rem;">NA RAHATE</div>
-        <div class="splash-sub" style="background: transparent; border: none;">Premium Hookah</div>
+        <div class="splash-logo" style="text-transform: uppercase;">ЯБВДУЛ</div>
+        <div class="splash-sub">Premium Hookah</div>
     </div>
 
     <div id="toast-container"></div>
 
     <header>
-        <div class="logo">NA RAHATE</div>
+        <div class="logo" style="text-transform: uppercase;">ЯБВДУЛ</div>
         <div style="display: flex; gap: 15px; align-items: center;">
             <div id="theme-btn"
                 style="cursor: pointer; color: var(--text-main); background: var(--input-bg); padding: 8px; border-radius: 50%;">
@@ -85,13 +85,15 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Отличный выбор для одного или в паре.</p>
-                <p class="app-card-kit">1 АППАРАТ • 1 ЗАБИВКА • 4 УГЛЯ • ПЛИТКА</p>
+                <p class="app-card-kit">1 аппарат • 1 забивка • 4 угля • плитка</p>
                 <button class="btn btn-black btn-order" data-tariff="SOLO" data-price="7000">Выбрать</button>
             </div>
 
-            <div class="app-card glass" style="border: 2px solid var(--accent); box-shadow: 0 10px 30px rgba(224, 122, 95, 0.15);">
+            <div class="app-card glass"
+                style="border: 1px solid var(--accent); box-shadow: 0 10px 30px rgba(224, 122, 95, 0.2);">
                 <div class="app-card-header">
-                    <span class="app-card-title" style="color: var(--accent);">DOUBLE</span>
+                    <span class="app-card-title"
+                        style="background: linear-gradient(90deg, #e07a5f, #f2cc8f); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DOUBLE</span>
                     <div style="text-align: right;">
                         <span class="discount-badge" id="badge-double" style="display: none;">СКИДКА</span>
                         <span class="old-price" id="old-price-double" style="display: none;">9 000 ₸</span>
@@ -99,11 +101,12 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Хит продаж. Две забивки — выгоднее!</p>
-                <p class="app-card-kit">1 АППАРАТ • 2 ЗАБИВКИ • 8 УГЛЕЙ • ПЛИТКА</p>
+                <p class="app-card-kit">1 аппарат • 2 забивки • 8 углей • плитка</p>
                 <button class="btn btn-red btn-order" data-tariff="DOUBLE" data-price="9000">Выбрать</button>
             </div>
 
-            <div class="app-card glass" style="border: 2px solid var(--secondary); box-shadow: 0 10px 30px rgba(242, 204, 143, 0.15);">
+            <div class="app-card glass"
+                style="border: 1px solid var(--secondary); box-shadow: 0 10px 30px rgba(242, 204, 143, 0.2);">
                 <div class="app-card-header">
                     <span class="app-card-title" style="color: var(--secondary);">TEAM</span>
                     <div style="text-align: right;">
@@ -113,14 +116,14 @@
                     </div>
                 </div>
                 <p class="app-card-desc">Идеально для тусовки с друзьями.</p>
-                <p class="app-card-kit">2 АППАРАТА • 4 ЗАБИВКИ • 16 УГЛЕЙ • 2 ПЛИТКИ</p>
+                <p class="app-card-kit">2 аппарата • 4 забивки • 16 углей • 2 плитки</p>
                 <button class="btn btn-cyan btn-order" data-tariff="TEAM" data-price="16000">Выбрать</button>
             </div>
         </div>
 
         <div id="tab-profile" class="tab-pane">
             <div id="view-login" class="glass"
-                style="padding: 40px 20px; text-align: center;">
+                style="padding: 40px 20px; border-radius: var(--radius-lg); text-align: center;">
                 <h2 class="section-title">Вход</h2>
                 <input type="text" class="modal-input" id="reg-name" placeholder="Твое имя (для новых)"
                     style="display: none; text-align: center;">
@@ -128,10 +131,14 @@
                     style="text-align: center; font-size: 1.2rem;">
                 <input type="password" class="modal-input" id="login-pass" placeholder="Пароль"
                     style="text-align: center;">
-                <div id="age-check-container" style="display: none; margin: 15px 0; text-align: left; background: var(--input-bg); padding: 12px; border-radius: var(--radius-sm);">
-                    <label style="display: flex; align-items: center; gap: 10px; justify-content: center; cursor: pointer;">
-                        <input type="checkbox" id="age-check" style="width: 20px; height: 20px; accent-color: var(--accent);">
-                        <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">Мне есть 21 год</span>
+                <div id="age-check-container"
+                    style="display: none; margin: 15px 0; text-align: left; background: var(--input-bg); padding: 12px; border-radius: var(--radius-sm);">
+                    <label
+                        style="display: flex; align-items: center; gap: 10px; justify-content: center; cursor: pointer;">
+                        <input type="checkbox" id="age-check"
+                            style="width: 20px; height: 20px; accent-color: var(--accent);">
+                        <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">Мне есть 21
+                            год</span>
                     </label>
                 </div>
                 <button class="btn btn-red" id="btn-login">Ворваться</button>
@@ -142,9 +149,9 @@
             <div id="view-profile" style="display: none;">
                 <h2 class="section-title">Профиль</h2>
                 <div class="glass"
-                    style="padding: 30px; margin-bottom: 20px;">
+                    style="padding: 35px; border-radius: var(--radius-lg); margin-bottom: 20px; background: linear-gradient(145deg, rgba(255,255,255,0.1), transparent);">
                     <p style="font-weight: 900; font-size: 1.2rem; color: var(--text-muted);" id="profile-name">Имя</p>
-                    <div style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 30px; font-weight: 900; letter-spacing: -1px; color: var(--text-main);"
+                    <div style="font-family: var(--font-vandal); font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 2px;"
                         id="profile-phone">...</div>
 
                     <div
@@ -157,7 +164,7 @@
                                 style="font-weight: 900; background: var(--text-main); color: var(--bg-main); padding: 6px 12px; border-radius: 8px; font-size: 0.9rem;"
                                 id="profile-discount-text">0% СКИДКА</span>
                         </div>
-                        <div style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 900; margin: 15px 0 10px;" id="profile-spent">0 ₸
+                        <div style="font-size: 2.5rem; font-weight: 900; margin: 15px 0 10px;" id="profile-spent">0 ₸
                         </div>
                         <div class="loyalty-progress-bg">
                             <div class="loyalty-progress-fill" id="loyalty-bar"></div>
@@ -167,7 +174,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-outline" id="btn-logout">Выйти</button>
+                <button class="btn btn-outline" style="border-radius: var(--radius-lg);" id="btn-logout">Выйти</button>
 
                 <div style="margin-top: 30px; margin-bottom: 20px;">
                     <p
@@ -184,13 +191,13 @@
         <div class="modal-content">
             <div class="modal-drag"></div>
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;">
-                <h2 style="font-family: var(--font-heading); font-size: 3rem; line-height: 1; font-weight: 900; letter-spacing: -2px; text-transform: uppercase;" id="modal-tariff-name">
+                <h2 style="font-family: var(--font-vandal); font-size: 3rem; line-height: 1;" id="modal-tariff-name">
                     TARIF</h2>
                 <div style="text-align: right;">
                     <span id="promo-badge"
-                        style="display: none; background: var(--accent); color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; vertical-align: top;">ПРОМО</span>
+                        style="display: none; background: var(--accent); color: white; padding: 3px 6px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; vertical-align: top;">ПРОМО</span>
                     <br>
-                    <span id="modal-final-price" style="font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--accent);">0
+                    <span id="modal-final-price" style="font-weight: 900; font-size: 1.8rem; color: var(--accent);">0
                         ₸</span>
                 </div>
             </div>
@@ -199,7 +206,7 @@
 
             <div style="display: flex; gap: 10px; margin-bottom: 25px;">
                 <button class="btn btn-outline" id="btn-add-bowl"
-                    style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem;">+ ДОП. ЧАША
+                    style="flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-style: dashed;">+ ДОП. ЧАША
                     (2000 ₸)</button>
                 <button class="btn btn-outline" id="btn-remove-bowl"
                     style="display: none; flex: 1; margin: 0; padding: 12px; font-size: 0.8rem; border-color: var(--accent); color: var(--accent);">❌
@@ -271,25 +278,35 @@
     <script type="module" src="js/app.js"></script>
 
     <div id="pwa-prompt" class="pwa-overlay">
-        <div class="pwa-card glass">
-            <div class="pwa-close" id="pwa-close">✖</div>
-            <img src="icons/apple-touch-icon.png" alt="NA RAHATE" class="pwa-icon">
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 10px; font-weight: 900;">NA RAHATE APP</h3>
-            <p style="font-weight: 600; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Установи нас
-                на главный экран, чтобы заказывать дым в один клик!</p>
-
-            <div id="pwa-ios-guide"
-                style="display: none; background: var(--input-bg); padding: 15px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;">
-                1. Нажми кнопку <svg style="width:16px;height:16px;vertical-align:middle;margin:0 5px;"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                    <polyline points="16 6 12 2 8 6"></polyline>
-                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                </svg> (Поделиться) внизу экрана<br><br>
-                2. Выбери <b>«На экран "Домой"»</b> ➕
+        <div class="pwa-card">
+            <div class="modal-drag" style="margin-top: -15px; margin-bottom: 20px;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main);">Установить приложение</h3>
+                <div id="pwa-close" style="cursor: pointer; background: var(--input-bg); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 15px; margin-bottom: 25px; align-items: center; background: var(--input-bg); padding: 15px; border-radius: var(--radius-md);">
+                <img src="icons/apple-touch-icon.png" alt="ЯБВДУЛ" style="width: 60px; height: 60px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <div style="text-align: left;">
+                    <h4 style="font-family: var(--font-vandal); font-weight: 700; font-size: 1.3rem; margin-bottom: 4px; color: var(--text-main); text-transform: uppercase;">ЯБВДУЛ</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Заказывай дым в один клик</p>
+                </div>
             </div>
 
-            <button id="pwa-install-btn" class="btn btn-red" style="display: none;">УСТАНОВИТЬ ПРИЛОЖЕНИЕ</button>
+            <div id="pwa-ios-guide" style="display: none; background: var(--input-bg); padding: 20px; border-radius: var(--radius-md); font-size: 0.95rem; font-weight: 600; text-align: left; margin-bottom: 25px; color: var(--text-main);">
+                <div style="display: flex; gap: 12px; margin-bottom: 15px; align-items: center;">
+                    <div style="background: var(--text-main); color: var(--bg-main); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 900; flex-shrink: 0;">1</div>
+                    <p>Нажми кнопку <svg style="width:20px;height:20px;vertical-align:middle;margin:0 4px; color: var(--accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> (Поделиться) внизу экрана</p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <div style="background: var(--text-main); color: var(--bg-main); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 900; flex-shrink: 0;">2</div>
+                    <p>Выбери <b style="color: var(--accent);">«На экран "Домой"»</b> ➕</p>
+                </div>
+            </div>
+
+            <button id="pwa-install-btn" class="btn btn-red" style="display: none; border-radius: var(--radius-lg); font-size: 1.1rem; padding: 20px; box-shadow: 0 10px 20px rgba(224, 122, 95, 0.4);">УСТАНОВИТЬ</button>
         </div>
     </div>
 </body>
