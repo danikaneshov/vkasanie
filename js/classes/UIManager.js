@@ -30,7 +30,7 @@ export class UIManager {
                 splash.style.opacity = '0';
                 setTimeout(() => splash.style.display = 'none', 600);
             }
-        }, 2000);
+        }, 1400);
     }
 
     vibrate() {
